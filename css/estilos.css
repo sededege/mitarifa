@@ -1,0 +1,447 @@
+@font-face {
+    font-family: 'Roboto';
+    src:url(font_awesome/fonts/Roboto-Bold.ttf);
+    src: url("font_awesome/fonts/Roboto-Regular.ttf");
+}
+
+.dPagina{
+    padding:0 5px 0 5px;
+
+}
+
+#dResultados{
+
+}
+#menuIzquierda div{
+    background-color: white !important;
+}
+.buscador{
+    margin:20px 10px;
+    width:100%;
+    height:50px;
+
+}
+.boton{
+    width: 70%;
+    height:50px;
+}
+.comprar{
+    position: absolute;
+    bottom: 3%;
+    left: calc(50% - 35%);
+    color: white;
+    border: white;
+    background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed); 
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+.toolbar-button--material {
+    color: #2193b0;
+}
+#fueraHora{
+    display: none;
+    font-size: 15px;
+    color: #2193b0;
+    position: absolute;
+    bottom: 12%;
+    width: 50%;
+    left: calc(50% - 25%);
+}
+#mostrar{
+    position: absolute;
+    height: 50px;
+    bottom: calc(50% - 25px);
+    left: calc(50% - 35%);
+    color: white;
+    border: white;
+    background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed);
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+.btn_agregar{
+    position: absolute;
+    height: 50px;
+    bottom: calc(50% - 80px);
+    left: calc(50% - 35%);
+    color: white;
+    border: white;
+    background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed);
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+#mostrarFondo{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #efeff4;
+}
+#agregarmatricula{
+
+}
+#agregarmatricula .modal__content div {
+
+}
+#agregarmatricula .modal__content div div:nth-of-type(1) input{
+    position: absolute;
+    width: 70%;
+    height: 40px;
+    top: calc(50% - 80px);
+    left: calc(50% - 35%);
+}
+#agregarmatricula .modal__content div div:nth-of-type(2) input{
+    position: absolute;
+    width: 70%;
+    height: 40px;
+    top: calc(50% - 30px);
+    left: calc(50% - 35%);
+}
+#matriculasfav{
+    height: 80vh;
+    overflow: scroll;
+}
+#matriculasfav ons-list-item{
+    background-color: white;
+    margin: 0 auto !important;
+    margin-top: 10px !important;
+    border-radius: 3px;
+    width: 95%;
+}
+#historialr ons-list-item{
+    background-color: white;
+    margin: 0 auto !important;
+    margin-top: 10px !important;
+    padding-left: 2%;
+    border-radius: 3px;
+    width: 95%;
+}
+#historialr div:nth-of-type(1) {
+    display: block;
+}
+#historialr div div:nth-of-type(1) p:nth-of-type(1){
+    text-align: left;
+    color: #2193b0;
+}
+#historialr div div:nth-of-type(1) p:nth-of-type(2){
+    text-align: left;
+    margin-top: 10px;
+    font-size: 17px;
+}
+#historialr div:nth-of-type(2){
+    opacity: .7;
+}
+#historialr div p{
+    margin: 0
+}
+#historialr div div:nth-of-type(2) p:nth-of-type(1){
+    width: 34%;
+    font-size: 15px;
+    float: left;
+    text-align: left;
+}
+#historialr div  div:nth-of-type(2) p:nth-of-type(2){
+    width: 50%;
+    font-size: 15px;
+    float: left;
+    text-align: left;
+}
+#historialr div span:nth-of-type(1){
+}
+#historialr div span:nth-of-type(2){
+    font-size: 12px;
+}
+#historialr hr{
+    width: 50%;
+    border: .5px solid #808080;
+    display: block;
+    margin: 10px 0;
+}
+.lista{
+    width:100%;
+}
+img{
+    width:100%;
+    margin-top:8px;
+    border-radius:8px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+}
+.gris{
+    color:grey !important; /*terminar */
+}
+.zmdi-star-outline{
+    font-size:30px;
+    padding:10px;
+    color: #ffc007;
+}
+
+.zmdi-delete{
+    font-size:25px;
+    padding:10px;
+    color: #2193b0;
+    position:absolute;
+    right:0;
+}
+.zmdi-edit{
+    font-size:25px;
+    padding:10px;
+    color: #2193b0;
+    position:absolute;
+    right:30px;
+
+}
+.zmdi-favorite{
+    font-size:30px;
+    padding:10px;
+    color: red;
+}
+.zmdi-favorite-outline{
+    font-size:30px;
+    padding:10px;
+    color: red;
+}
+.card {
+    margin:0px !important;
+    padding:0px !important;
+    background:none !important;
+    height:100%;
+    box-shadow:none !important;
+    position:relative;
+
+}
+
+.card__title {
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.estrella {
+    width:30px;
+    position:absolute;
+    z-index:333;
+    left:5px;
+    top:-2px;
+    box-shadow:none !important;
+}
+
+.votos {
+    font-size:13px;
+    font-weight:bold;
+    position:absolute;
+    z-index:999;
+    top:15px;
+    left:16px;
+    color:#1c1c1c;
+}
+.modal__content{
+    background-color: white;
+}
+
+ons-carousel-item {
+    width:150px !important;
+}
+
+h1{
+    font-size:18px !important;
+    font-weight:bold !important;
+    color: #ffc007;
+    border-bottom:1px solid #ffc007 !important;
+    width:50% !important;
+    padding:10px 5px !important;
+    margin-bottom:20px !important;
+    margin-top:0px !important;
+}
+
+.titulo {
+    width:100% !important;
+    text-align:center !important;
+    margin:10px !important;
+    padding: 0px !important;
+    border-bottom:none !important;
+}
+
+h2 {
+    font-size:18px !important;
+    font-weight:bold !important;
+    color: #ffc007;
+    width:100% !important;
+    padding:10px 5px !important;
+    margin:0 auto !important;
+    text-align:center !important;
+    font-size:16px !important;
+}
+
+p{
+    text-align:center;
+    font-size:18px;
+}
+
+#dDetalle .fav {
+    display:block;
+    position:absolute;
+    font-size:35px !important;
+    right:0px;
+    top:-3px;}
+
+#caja {
+    position:relative;
+}
+iframe {
+    margin-top:20px;
+}
+
+.title {
+    font-size:14px !important;
+    height:20px;
+    color: #ffc007;
+}
+
+.ons-swiper-target {
+    height: 300px;
+    padding:0px;
+}
+
+.tarjeta {
+    position:relative;
+}
+#ulInicio{
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#ulInicio hr{
+    background-color: #808080;
+    width: 70%;
+}
+#dCreditos p {
+    margin:10px AUTO !important;
+}
+#agregarmatricula {
+    width:100% !important;
+    height:100% !important;
+    background-color:black;
+    position:absolute !important;
+    z-index:99999999;
+}
+#duracion{
+    position: relative;
+}
+#duracion p:nth-of-type(1){
+
+}
+#duracion p:nth-of-type(2){
+    font-size: 34px;
+    width: 100%;
+}
+#duracion i:nth-of-type(1){
+    position: absolute;
+    font-size: 30px;
+    top: 32%;
+    left: 17%;
+    padding: 30px;
+}
+#duracion i:nth-of-type(2){
+    position: absolute;
+    font-size: 30px;
+    top: 32%;
+    right: 17%;
+    padding: 30px;
+}
+
+.toolbar {
+    position:absolute !important;
+    z-index:1 !important;
+}
+
+.matriculasguardadas {
+    display: block;
+    width: 80%;
+    height: 42px;
+    padding-left: 20px;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: #808080;
+    border-radius: 3px; 
+}
+.matriculasguardadas:active {
+    border: none;
+}
+/*SOPORTE*/
+#soporte iframe{
+    margin-top: 0px;
+    width: 100%;
+    height: 350px;
+}
+#soporte p{
+    padding-left: 15px;
+    font-size: 15px;
+}
+/*AYUDA*/
+#carousel{
+
+}
+#carousel ons-carousel-item{
+    width: 100% !important;
+}
+#carousel ons-carousel-item div{
+    height: 100vh;
+}
+#carousel ons-carousel-item img{
+    box-shadow: none;
+    border-radius: 0px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 24%;
+}
+#carousel ons-carousel-item p{
+    margin-top: 20%;
+    padding: 0 18%;
+    color: #808080;
+}
+#indicador{
+    position: absolute;
+    bottom: 2%;
+    left: calc(50% - 8%);
+    margin: 0 auto;
+    width: 16%;
+}
+#indicador div{
+    display: inline-block;
+    margin-left: 2%;
+    width: 26%;
+    border-radius: 50%;
+    padding-bottom: 25%;
+}
+#indicador div:nth-of-type(1){
+
+    background-color: #282828;
+}
+#indicador div:nth-of-type(2){
+    background-color: #909090;
+}
+#indicador div:nth-of-type(3){
+    background-color: #909090;
+}
+
+
+
+.titulo {
+    margin:10px 0px !important;
+    color:grey;
+    font-size:1em;
+}
+
+.cuenta {
+    margin:10px 0px !important;
+}
+
+.zmdi-plus{
+    padding:10px !important;
+}
+
+.zmdi-minus{
+    padding:10px !important;
+}
+

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mi Tarifa</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/onsenui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/onsen-css-components.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="css/font_awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page id="menuIzquierda">
+                <ons-list>
+                    <ons-list-item onclick="fn.load('home.html')" tappable>
+                        Inicio
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('historial.html')" tappable>
+                        Historial
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('matriculas.html')" tappable>
+                        Matriculas
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('ayuda.html')" tappable>
+                        Ayuda
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('soporte.html')" tappable>
+                        Soporte
+                    </ons-list-item>
+                    <ons-list-item onclick="createAlertDialogBorrar()" tappable>
+                        Borrar datos
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
+
+    <template id="home.html">
+        <ons-page id="home">
+            <ons-modal id='agregarmatricula' direction="up">
+                <div style="text-align: center">
+                    <div><input id="nombre" class="text-input text-input--material" placeholder="Seudonimo" type="text" required></div>
+                    <br />
+                    <div><input id="matricula"  class="text-input text-input--material" placeholder="Ingrese matricula" type="text" required></div>
+                    <button class="btn_agregar boton button button--outline" >Agregar matricula</button>
+                </div>
+            </ons-modal>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="btn_ingresar" onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Inicio
+                </div>
+            </ons-toolbar>
+
+            <!--Cuadros de dialogo-->
+            <ons-alert-dialog id="my-alert-dialog-matriculaVacia" modifier="rowfooter">
+                <div class="alert-dialog-title">Alerta</div>
+                <div class="alert-dialog-content">
+                    Los campos no pueden estar vacios
+                </div>
+                <div class="alert-dialog-footer">
+                    <ons-alert-dialog-button onclick="hideAlertDialogVacia()">OK</ons-alert-dialog-button>
+                </div>
+            </ons-alert-dialog>
+            <ons-alert-dialog id="my-alert-dialog-matricula" modifier="rowfooter">
+                <div class="alert-dialog-title">Alerta</div>
+                <div class="alert-dialog-content">
+                    Está excediendo el número de digitos posibles<br>Ej: AAF3456
+                </div>
+                <div class="alert-dialog-footer">
+                    <ons-alert-dialog-button onclick="hideAlertDialogMatricula()">OK</ons-alert-dialog-button>
+                </div>
+            </ons-alert-dialog>
+            <!----->
+
+            <div class="progress-bar progress-bar--material progress-bar--indeterminate">
+            </div>
+            <p class="titulo">
+                Matriculas
+            </p>
+            <select class="matriculasguardadas select-input select-input--material">
+
+            </select>
+            <ul id="ulInicio">
+                <li id="horaActual">
+                    <p class="titulo">
+                        Hora
+                    </p>
+                    <div class="fecha">
+                        <p class='hora'></p>
+                        <input class="horainput" type="hidden" value=''>
+                        <input class="fechainput" type="hidden" value=''>
+                    </div>
+                </li>
+                <hr>
+                <li id="duracion">
+                    <p class="titulo" >
+                        Duración
+                    </p>
+                    <i class="zmdi zmdi-minus"  onclick="restar()"></i>
+                    <p class="cuenta"></p>
+                    <i class="zmdi zmdi-plus"  onclick="sumar()"></i>
+                </li>
+                <hr>
+                <li id="horaFinal">
+                    <p class="titulo">
+                        Reservado hasta las
+                    </p>
+                    <p id="horaFin">
+                    </p>
+                </li>
+            </ul>
+            <p id="fueraHora">¡El estacionamiento a esta hora es gratis!</p>
+            <button class="comprar boton button button--outline" onclick="historialcompras()">Comprar</button>
+        </ons-page>
+    </template>
+
+    <template id="historial.html">
+        <ons-page id="historial">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="btn_ingresar" onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Historial de compras
+                </div>
+            </ons-toolbar>
+            <div id="historialr">
+
+            </div>
+        </ons-page>
+    </template>
+
+    <template id="matriculas.html">
+        <ons-page id="matriculas">
+            <ons-modal id='agregarmatricula' direction="up">
+                <div style="text-align: center">
+                    <div><input id="nombre" class="text-input text-input--material" placeholder="Seudonimo" type="text" required></div>
+                    <br />
+                    <div><input id="matricula"  class="text-input text-input--material" placeholder="Ingrese matricula" type="text" required></div>
+                    <button class="btn_agregar boton button button--outline" >Agregar matricula</button>
+                </div>
+            </ons-modal>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="btn_ingresar" onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Mis matriculas
+                </div>
+            </ons-toolbar>
+
+
+            <!--Cuadros de dialogo-->
+            <ons-alert-dialog id="my-alert-dialog-matriculaVacia" modifier="rowfooter">
+                <div class="alert-dialog-title">Alerta</div>
+                <div class="alert-dialog-content">
+                    Los campos no pueden estar vacios
+                </div>
+                <div class="alert-dialog-footer">
+                    <ons-alert-dialog-button onclick="hideAlertDialogVacia()">OK</ons-alert-dialog-button>
+                </div>
+            </ons-alert-dialog>
+            <ons-alert-dialog id="my-alert-dialog-matricula" modifier="rowfooter">
+                <div class="alert-dialog-title">Alerta</div>
+                <div class="alert-dialog-content">
+                    Está excediendo el número de digitos posibles<br>Ej: AAF3456
+                </div>
+                <div class="alert-dialog-footer">
+                    <ons-alert-dialog-button onclick="hideAlertDialogMatricula()">OK</ons-alert-dialog-button>
+                </div>
+            </ons-alert-dialog>
+            <!----->
+
+
+            <div id="matriculasfav">
+
+            </div>
+            <div id="mostrarFondo">
+                <button id="mostrar" class="boton button button--outline" >Agregar otra matricula</button>
+            </div>
+            <ons-modal id='modificarmatricula' direction="up">
+                <div style="text-align: center">
+                    <div><input id="nombreedit" class="text-input text-input--material" placeholder="Seudonimo" type="text" required></div>
+                    <br/>
+                    <div><input id="matriculaedit"  class="text-input text-input--material" placeholder="Ingrese matricula" type="text" required></div>      
+                    <button id="cerrar" class="btn_agregar boton button button--outline" >Modificar</button>
+                </div>
+            </ons-modal>
+        </ons-page>
+    </template>
+
+    <template id="soporte.html">
+        <ons-page id="ayuda">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="btn_ingresar" onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Soporte
+                </div>
+            </ons-toolbar>
+            <div id="soporte">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9254.62126421793!2d-56.18380481351856!3d-34.90638108474493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81cb9e6155c7%3A0x8403f73d9621c714!2sSan+Jos%C3%A9+1390%2C+11200+Montevideo%2C+Departamento+de+Montevideo!5e0!3m2!1ses!2suy!4v1561498016047!5m2!1ses!2suy" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <ons-list>
+                    <ons-list-item>
+                        <i class="zmdi zmdi-pin"></i><p>San Jose 1390</p>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <i class="zmdi zmdi-phone"></i><p>1950 7443</p>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <i class="zmdi zmdi-time"></i><p>De lunes a viernes de 10:15 a 15:45 hs.</p>
+                    </ons-list-item>
+                </ons-list>
+            </div>
+        </ons-page>
+    </template>
+    <template id="ayuda.html">
+        <ons-page id="ayuda">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="btn_ingresar" onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Ayuda
+                </div>
+            </ons-toolbar>
+            <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+                <ons-carousel-item>
+                    <div>
+                        <img src="img/Ayuda/1.png" alt=""/>
+                        <p>Ingrese la matrícula de su auto junto con un seudónimo para identificarla fácilmente. Recuerde también que puede ingresar más de una matrícula</p>
+                    </div>
+                </ons-carousel-item>
+                <ons-carousel-item>
+                    <div>
+                        <img src="img/Ayuda/2.png" alt=""/>
+                        <p>Registre hora y tiempo que desees estar estacionado. </p>
+                    </div>
+                </ons-carousel-item>
+                <ons-carousel-item>
+                    <div>
+                        <img src="img/Ayuda/3.png" alt=""/>
+                        <p>Puede ingresar al historial para visualizar todas sus compras anteriores.</p>
+                    </div>
+                </ons-carousel-item>
+            </ons-carousel>
+            <div id="indicador">
+                <div id="indicadorUno"></div>
+                <div id="indicadorDos"></div>
+                <div id="indicadorTres"></div>
+            </div>
+        </ons-page>
+    </template>
+
+    <template id="borrar.html">
+        <ons-alert-dialog id="borrarDatos" modifier="rowfooter">
+            <div class="alert-dialog-title">Alerta</div>
+            <div class="alert-dialog-content">
+                ¿Estás seguro que deseas eliminar todos tus datos?
+            </div>
+            <div class="alert-dialog-footer">
+                <ons-alert-dialog-button onclick="eliminarDatos()" id="si">Si</ons-alert-dialog-button>
+                <ons-alert-dialog-button onclick="hideAlertDialogBorrar()">Cancelar</ons-alert-dialog-button>
+            </div>
+        </ons-alert-dialog>
+    </template>
+
+
+
+
+    <script src="js/onsenui.min.js" type="text/javascript"></script>
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/codigo.js" type="text/javascript"></script>
+</body>
+</html>
